@@ -1,0 +1,9 @@
+# Ignore log files and TMP
+.byebug_history
+tmp/
+
+# Ignore bundle config
+.bundle/
+
+# Ignore DOTENV file
+.env

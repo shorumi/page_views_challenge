@@ -1,0 +1,31 @@
+version: '3.7'
+
+x-base-app: &base_app
+  build:
+    context: .
+    dockerfile: Dockerfile
+  entrypoint: ['sh', './entrypoint.sh']
+  volumes:
+      - ".:/app:cached"
+      - bundle:/usr/local/bundle
+  stdin_open: true
+  tty: true
+  tmpfs: /tmp
+
+services:
+  page_views_api:
+    <<: *base_app
+    command: >
+      bash -c "bundle exec puma --config config/puma.rb"
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
+
+volumes:
+  bundle:
+
+networks:
+  default:
+    external:
+      name: dev_ntw

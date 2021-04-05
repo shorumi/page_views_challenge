@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require './sinatra_api/page_views_api_app'
+require './app'
 
-run PageViewsApiApp
+run App

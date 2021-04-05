@@ -4,6 +4,8 @@ x-base-app: &base_app
   build:
     context: .
     dockerfile: Dockerfile
+    args:
+      BUNDLER_VERSION: ${BUNDLER_VERSION}
   entrypoint: ['sh', './entrypoint.sh']
   volumes:
       - ".:/app:cached"
@@ -11,6 +13,8 @@ x-base-app: &base_app
   stdin_open: true
   tty: true
   tmpfs: /tmp
+  depends_on:
+    - mongodb
 
 services:
   page_views_api:
@@ -22,8 +26,18 @@ services:
     env_file:
       - .env
 
+  mongodb:
+    image: mongo
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    volumes:
+      - mongodb_data:/data/db
+    env_file:
+      - .env
+
 volumes:
   bundle:
+  mongodb_data:
 
 networks:
   default:

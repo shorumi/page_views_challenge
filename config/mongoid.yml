@@ -1,0 +1,14 @@
+development:
+  clients:
+    default:
+      uri: <%= "mongodb://mongodb:#{ENV['MONGODB_PORT']}/#{ENV['MONGODB_NAME']}_dev" %>
+
+test:
+  clients:
+    default:
+      uri: <%= "mongodb://mongodb:#{ENV['MONGODB_PORT']}/#{ENV['MONGODB_NAME']}_test" %>
+
+production:
+  clients:
+    default:
+      uri: <%= "mongodb://#{ENV['MONGODB_USR']}:#{ENV['MONGODB_PWD']}@#{ENV['MONGODB_ADDR']}:#{ENV['MONGODB_PORT']}/#{ENV['MONGODB_NAME']}" %>

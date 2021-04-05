@@ -3,13 +3,12 @@
 require 'support/spec_helper'
 require 'rspec'
 
-RSpec.describe 'App' do
+RSpec.describe App do
   describe 'GET /most_viewed_webpages' do
     it 'should return unique most viewed webpages ordered' do
       get '/most_viewed_webpages'
       expect(last_response).to be_ok
       attributes = JSON.parse(last_response.body)
-      require 'pry-byebug'; binding.pry
       expect(attributes.size).to eq(0)
       expect(attributes).to eq([])
 

@@ -87,7 +87,7 @@ dkcr page_views_api rspec -fdoc --trace
 ```
 
 ## IMPROVEMENTS
-- Log files handler is not good, to keep the data persisted consistent, right now when you ping the `most_webpages_views` the log file will be renamed with a timestamp, that way visits counter column is not increased with data that were already read and persisted, so when you want to see the `unique_webpages_views` or `most_webpages_views` again, you should add or rename the `webserver.log`, it's supposed to be new fresh log data and, that will increase the records counters.
+- Log files handler is not good, to keep the data persisted consistent, right now when you ping the `most_webpages_views` the log file will be renamed with a timestamp, that way visits counter column is not increased with data that were already read and persisted, so when you want to see the `unique_webpages_views` or `most_webpages_views` again, you should add or rename the `webserver.log`, it's supposed to be new fresh log data and, that will populate the records counters.
 
 An exception message is displayed to you, warning that it needs a valid log file, it occurs when you ping twice the same endpoint and, the log file is not named `webserver.log` it was already consumed once and was renamed to `webserver#{TIMESTAMP}.log`.
 

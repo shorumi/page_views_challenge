@@ -8,9 +8,11 @@ ENV['RACK_ENV'] ||= 'test'
 Mongoid.load!(File.join(File.dirname(__FILE__), '..', '..', 'config', 'mongoid.yml'))
 
 RSpec.configure do |config|
-  config.after(:each) do
+  config.before(:each) do
     PageView.all.delete
+  end
 
+  config.after(:each) do
     unless Dir.glob('./spec/support/fixtures/*-UTC.log').empty?
       Dir.each_child('./spec/support/fixtures/') do |file|
         File.rename(

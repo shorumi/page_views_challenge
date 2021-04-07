@@ -83,7 +83,7 @@ it returns the Unique Webpages views ordered in descending order and as JSON
 ## Running the RSpec tests
 - In a terminal tab run the rspec tests: 
 ```shell
-docker-compose run page_views_api rspec -fdoc --trace
+docker-compose run page_views_api rspec -fdoc
 ```
 
 ## IMPROVEMENTS

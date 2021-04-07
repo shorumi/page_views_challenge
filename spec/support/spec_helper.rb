@@ -8,19 +8,20 @@ ENV['RACK_ENV'] ||= 'test'
 Mongoid.load!(File.join(File.dirname(__FILE__), '..', '..', 'config', 'mongoid.yml'))
 
 RSpec.configure do |config|
-  # Run each test inside a DB transaction
-  #   config.around(:each) do |test|
-  #     ActiveRecord::Base.transaction do
-  #       test.run
-  #       raise ActiveRecord::Rollback
-  #     end
-  #   end
+  config.after(:each) do
+    PageView.all.delete
+
+    unless Dir.glob('./spec/support/fixtures/*-UTC.log').empty?
+      Dir.each_child('./spec/support/fixtures/') do |file|
+        File.rename(
+          "./spec/support/fixtures/#{file}",
+          './spec/support/fixtures/webserver_fixture.log'
+        )
+      end
+    end
+  end
 
   config.order = 'random'
 
   include Rack::Test::Methods
-
-  def app
-    App.new
-  end
 end

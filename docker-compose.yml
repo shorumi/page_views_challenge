@@ -12,9 +12,12 @@ x-base-app: &base_app
       - bundle:/usr/local/bundle
   stdin_open: true
   tty: true
-  tmpfs: /tmp
+  tmpfs:
+    - /tmp
   depends_on:
     - mongodb
+  env_file:
+    - .env
 
 services:
   page_views_api:

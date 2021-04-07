@@ -17,8 +17,7 @@ end
 
 Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
 
-class App < Sinatra::Base
-  set :root, File.dirname(__FILE__)
+class App < Sinatra::Application
   set :server, :puma
 
   configure :development do

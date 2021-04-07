@@ -1,1 +1,1 @@
-require_relative 'page_view_routes'
+require './app/routes/page_view_routes'

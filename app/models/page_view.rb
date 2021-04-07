@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class PageView
   include Mongoid::Document
 
-  field :uri, type: String
+  field :route, type: String
   field :ip, type: String
-  field :visits, type: Integer
+  field :visits, type: Integer, default: 0
 
-  validates :ip, :uri, uniqueness: true
-  validates :ip, :uri, :visits, presence: true
+  validates :ip, :route, presence: true
 end

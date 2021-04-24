@@ -27,11 +27,15 @@ class PageViewService
 
     read_log_file.each do |item|
       route, ip = match_routes_ip_from_log_file(item)
-      page_view = pageview_repository.find_or_create_by_route_and_ip!(route, ip)
-      increment_visits_column(:visits, page_view.id) unless page_view.blank?
+      persist_page_view_data(route, ip)
     end
 
     handle_sys_files.rename_with_timestamp
+  end
+
+  def persist_page_view_data(route, ip)
+    page_view = pageview_repository.find_or_create_by_route_and_ip!(route, ip)
+    increment_visits_column(:visits, page_view.id) unless page_view.blank?
   end
 
   def match_routes_ip_from_log_file(item)

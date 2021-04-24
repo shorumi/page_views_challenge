@@ -3,8 +3,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
-
 # Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort
 gem 'sinatra', '~> 2.1.0'
 # A Ruby Web Server Built For Concurrency

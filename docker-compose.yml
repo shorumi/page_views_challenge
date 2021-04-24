@@ -4,8 +4,6 @@ x-base-app: &base_app
   build:
     context: .
     dockerfile: Dockerfile
-    args:
-      BUNDLER_VERSION: ${BUNDLER_VERSION}
   entrypoint: ['sh', './entrypoint.sh']
   volumes:
       - ".:/app:cached"

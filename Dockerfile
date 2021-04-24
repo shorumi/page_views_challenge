@@ -1,7 +1,5 @@
 FROM ruby:2.7-slim-buster
 
-ARG BUNDLER_VERSION
-
 # Common dependencies
 RUN apt-get update -qq \
   && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
@@ -20,7 +18,7 @@ ENV LANG=C.UTF-8 \
 
 # Upgrade RubyGEMS and install required Bundler version
 RUN gem update --system && \
-    gem install bundler:$BUNDLER_VERSION
+    gem install bundler
 
 COPY Gemfile .
 

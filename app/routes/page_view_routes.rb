@@ -3,6 +3,8 @@
 require 'sinatra/json'
 require 'sinatra/reloader'
 
+require './app/models/page_view'
+require './app/repositories/page_view'
 require './app/services/page_view_service'
 require './app/custom/exception_messages/error_message'
 

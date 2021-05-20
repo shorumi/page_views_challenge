@@ -40,6 +40,8 @@ group :test do
   gem 'rack-test'
   # Test whenever cron jobs
   gem 'whenever-test'
+  # SimpleCov is a code coverage analysis tool for Ruby
+  gem 'simplecov', require: false
 end
 
 group :development, :test do

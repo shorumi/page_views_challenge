@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require File.join(File.dirname(__FILE__), '..', '..', 'app')
 
 require 'rack/test'

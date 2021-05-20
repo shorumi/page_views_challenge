@@ -12,3 +12,6 @@ tmp/
 crontab*
 
 log_files/webserver*
+
+# Simplecov
+coverage/

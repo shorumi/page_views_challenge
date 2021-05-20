@@ -7,5 +7,5 @@ bundle clean --force
 # Check whether or not gems are installed, and install it case not installed.
 bundle check || bundle install --jobs=$(nproc) --retry=5
 
-./libs/scripts/wait-for-it.sh mongodb:27017 -- "$@"
+./libs/scripts/wait-for-it.sh rabbitmq:15672 mongodb:27017 -- "$@"
 

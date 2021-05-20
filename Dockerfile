@@ -6,6 +6,7 @@ RUN apt-get update -qq \
     build-essential \
     gnupg2 \
     libpq-dev \
+    cron \
   && apt-get clean \
   && rm -rf /var/cache/apt/archives/* \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \

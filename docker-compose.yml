@@ -11,9 +11,7 @@ x-base-app: &base_app
   stdin_open: true
   tty: true
   tmpfs:
-    - /tmp
-  depends_on:
-    - mongodb
+    - /tmp    
   env_file:
     - .env
 
@@ -21,11 +19,15 @@ services:
   page_views_api:
     <<: *base_app
     command: >
-      bash -c "bundle exec puma --config config/puma.rb"
+      bash -c "cron && whenever --set environment=$RACK_ENV --update-crontab && bundle exec puma --config config/puma.rb"
     ports:
       - "${PORT}:${PORT}"
     env_file:
       - .env
+    depends_on:
+      - mongodb
+      - rabbitmq
+      - sneakers
 
   mongodb:
     image: mongo
@@ -35,6 +37,23 @@ services:
       - mongodb_data:/data/db
     env_file:
       - .env
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - ${RABBITMQ_PORT}:${RABBITMQ_PORT}
+      - ${RABBITMQ_API_PORT}:${RABBITMQ_API_PORT}
+    volumes:
+      - "/data"
+    env_file:
+      - .env
+
+  sneakers:
+    <<: *base_app
+    command: rake sneakers:run --trace
+    depends_on:
+      - rabbitmq
+
 
 volumes:
   bundle:

@@ -3,6 +3,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Active Job is a framework for declaring jobs and making them run on a variety of queuing backends
+gem 'activejob'
+# Active Support is a collection of utility classes and standard library extensions that were found useful for the Rails framework
+gem 'activesupport'
+
+# Drop-in replacement for :sneakers adapter of ActiveJob
+# A high-performance RabbitMQ background processing framework for Ruby.
+gem 'advanced-sneakers-activejob'
+
 # Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort
 gem 'sinatra', '~> 2.1.0'
 # A Ruby Web Server Built For Concurrency
@@ -10,18 +19,27 @@ gem 'puma'
 # Mongoid is an ODM (Object-Document Mapper) framework for MongoDB in Ruby.
 gem 'mongoid'
 
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying
+# cron jobs.
+gem 'whenever', require: false
+
+# Rake is a Make-like program implemented in Ruby. Tasks and dependencies are specified in standard Ruby syntax.
+gem 'rake'
+
 group :development do
   # For every future Sinatra release, have at least one fully compatible release
   gem 'sinatra-contrib'
-  # Rake is a Make-like program implemented in Ruby. Tasks and dependencies are specified in standard Ruby syntax.
-  gem 'rake'
 end
 
 group :test do
+  # actory_bot is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
+  gem 'factory_bot'
   # Behaviour Driven Development for Ruby
   gem 'rspec'
   # Rack::Test is a small, simple testing API for Rack apps
   gem 'rack-test'
+  # Test whenever cron jobs
+  gem 'whenever-test'
 end
 
 group :development, :test do
@@ -31,6 +49,4 @@ group :development, :test do
   gem 'pry-byebug'
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails'
-  # RuboCop is a Ruby static code analyzer (a.k.a. linter) and code formatter.
-  gem 'rubocop'
 end

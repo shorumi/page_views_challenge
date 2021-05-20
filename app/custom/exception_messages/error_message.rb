@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module ExceptionMessages
-  module LogFileNotFoundErrorMessage
+  module DefaultError
     class << self
       def error_message(error)
         {
-          message: 'Please insert a valid logfile at ./log_files/ directory',
-          status_code: 404,
+          message: 'An unexpected error occurred',
+          status_code: 505,
           error: error.message
         }
       end

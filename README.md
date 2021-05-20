@@ -6,6 +6,8 @@
 - MongoDB
 - Sinatra
 - Mongoid
+- RabbitMQ
+- Async JOB
 
 ## Starting the project
 - Create a brand new `.env` file:
@@ -86,10 +88,4 @@ it returns the Unique Webpages views ordered in descending order and as JSON
 docker-compose run page_views_api rspec -fdoc
 ```
 
-## IMPROVEMENTS
-Log files handler is not good, to keep the data persisted consistent, right now when you ping the `most_webpages_views` the log file will be renamed with a timestamp, that way visits counter column is not increased with data that were already read and persisted, so when you want to see the `unique_webpages_views` or `most_webpages_views` again, you should add or rename the `webserver.log`, it's supposed to be new fresh log data and, that will populate the records counters.
 
-
-When you ping the same endpoint twice and, the log file is not named as `webserver.log`, means that it was already consumed once and was renamed to `webserver#{TIMESTAMP}.log`; An exception message is displayed, warning that it needs a valid log file.
-
-This kind of behavior could be avoided with some kind of Background Job that keeps listening to these log files and then performs the content sanitization, turning the data good to be recorded into the DB.

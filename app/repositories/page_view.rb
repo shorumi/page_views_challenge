@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'mongoid'
+
 module Repository
   class PageView
     def initialize(entity:)
@@ -28,7 +30,7 @@ module Repository
       entity.collection.aggregate(
         [
           {
-            '$group' => 
+            '$group' =>
             {
               '_id': '$route',
               'totalVisits' =>

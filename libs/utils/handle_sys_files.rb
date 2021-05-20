@@ -6,8 +6,11 @@ class HandleSysFiles
     @filepath = directory + filename
   end
 
-  def read_file
+  def file_exists?
     File.exist?(filepath)
+  end
+
+  def read_file
     File.readlines(filepath)
   end
 

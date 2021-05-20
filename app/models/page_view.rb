@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'mongoid'
+
 class PageView
   include Mongoid::Document
 

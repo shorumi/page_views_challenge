@@ -5,12 +5,12 @@ require './app/services/page_view_service'
 
 RSpec.describe PageViewService do
   describe '#call' do
+    before do
+      FactoryBot.create(:page_view)
+    end
+
     let(:service) do
       described_class.new(
-        handle_sys_files: ::HandleSysFiles.new(
-          directory: './spec/support/fixtures/',
-          filename: 'webserver_fixture.log'
-        ),
         pageview_repository: ::Repository::PageView.new(entity: PageView)
       )
     end

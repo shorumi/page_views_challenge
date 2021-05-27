@@ -29,6 +29,6 @@ set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 set :environment, rack_env
 ENV.each { |k, v| env(k, v) }
 
-every 5.minute do
+every 2.minute do
   rake 'whenever:persist_page_view_task'
 end

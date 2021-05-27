@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'support/spec_helper'
+require './app/business/rules/page_view'
 require './app/models/page_view'
 require './app/repositories/page_view'
 
@@ -16,7 +17,9 @@ RSpec.describe App do
 
   let(:app) do
     PageViewRoutes.new(
-      page_view_service: ::PageViewService.new(pageview_repository: ::Repository::PageView.new(entity: PageView))
+      page_view_business_rules: Business::Rules::PageView.new(
+        pageview_repository: ::Repository::PageView.new(entity: PageView)
+      )
     )
   end
   let(:attributes) { JSON.parse(last_response.body) }

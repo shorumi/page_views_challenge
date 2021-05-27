@@ -6,7 +6,7 @@ require 'sneakers/tasks'
 
 require './app/workers/page_view_job'
 require './libs/utils/handle_sys_files'
-require './app/services/handle_page_view_job'
+require './app/services/handle_page_view_job_service'
 require './bin/worker'
 
 desc 'Load the environment'
@@ -17,7 +17,7 @@ end
 namespace :whenever do
   desc 'Persists Page Views to the DB'
   task(persist_page_view_task: :environment) do
-    HandlePageViewJob.new(
+    HandlePageViewJobService.new(
       handle_sys_files: HandleSysFiles.new(
         directory: './log_files/',
         filename: 'webserver.log'

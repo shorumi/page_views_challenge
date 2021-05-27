@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 module ExceptionMessages
-  module DefaultError
+  module NotFoundFile
     class << self
-      def error_message(error)
+      def message
         {
-          message: 'An unexpected error occurred',
-          status_code: 505,
-          error: error.message
+          status_code: 404,
+          message: 'There is no valid Log File, please provide one!'
         }
       end
     end

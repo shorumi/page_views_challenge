@@ -9,6 +9,8 @@ require 'sneakers/handlers/maxretry'
 require 'active_job'
 require 'advanced_sneakers_activejob'
 
+require './app/serializers/handle_logfile_service_serializer'
+
 require './app'
 
 module Connection
@@ -52,3 +54,4 @@ Sneakers.configure(
 Sneakers.logger.level = Logger::INFO
 
 ActiveJob::Base.queue_adapter = :advanced_sneakers
+ActiveJob::Serializers.add_serializers(HandleLogfileServiceSerializer)

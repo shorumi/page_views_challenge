@@ -3,6 +3,7 @@
 class HandleSysFiles
   def initialize(directory:, filename:)
     @directory = directory
+    @filename = filename
     @filepath = directory + filename
   end
 
@@ -30,8 +31,8 @@ class HandleSysFiles
   private
 
   def timestamp
-    Time.now.utc.to_s.gsub(' ', '-')
+    Time.current.to_s.gsub(' ', '-')
   end
 
-  attr_reader :directory, :filepath
+  attr_reader :directory, :filepath, :filename
 end

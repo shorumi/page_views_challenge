@@ -54,7 +54,6 @@ services:
     depends_on:
       - rabbitmq
 
-
 volumes:
   bundle:
   mongodb_data:

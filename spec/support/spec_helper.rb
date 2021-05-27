@@ -16,17 +16,6 @@ RSpec.configure do |config|
     PageView.all.delete
   end
 
-  config.after(:each) do
-    unless Dir.glob('./spec/support/fixtures/*-UTC.log').empty?
-      Dir.each_child('./spec/support/fixtures/') do |file|
-        File.rename(
-          "./spec/support/fixtures/#{file}",
-          './spec/support/fixtures/webserver_fixture.log'
-        )
-      end
-    end
-  end
-
   config.order = 'random'
 
   config.include FactoryBot::Syntax::Methods

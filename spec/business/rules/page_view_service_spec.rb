@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'support/spec_helper'
-require './app/services/page_view_service'
+require './app/business/rules/page_view'
 
-RSpec.describe PageViewService do
+RSpec.describe Business::Rules::PageView do
   describe '#call' do
     before do
       FactoryBot.create(:page_view)
@@ -14,6 +14,7 @@ RSpec.describe PageViewService do
         pageview_repository: ::Repository::PageView.new(entity: PageView)
       )
     end
+
     context '.most_webpages_views' do
       it { expect(service.most_webpages_views.to_a).to_not be_empty }
     end

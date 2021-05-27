@@ -10,10 +10,12 @@ require './app/models/init'
 require './config/init'
 require './config/routes/init'
 
+# :nocov:
 if Sinatra::Base.environment == :development
   require 'dotenv'
   Dotenv.load
 end
+# :nocov:
 
 Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
 

@@ -21,7 +21,8 @@ Username: `guest` / Password: `guest`
 
 
 ## Logs
-<img width="1389" alt="Screen Shot 2021-05-27 at 01 21 48" src="https://user-images.githubusercontent.com/71681750/119767827-ff6e0a80-be8d-11eb-81e5-8704f1d62cbf.png">
+<img width="1440" alt="Screen Shot 2021-05-27 at 02 08 22" src="https://user-images.githubusercontent.com/71681750/119769238-7c9a7f00-be90-11eb-8bc3-e3f48f680661.png">
+
 
 
 ## Tech Stack

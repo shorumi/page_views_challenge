@@ -1,5 +1,19 @@
 # Viewed Webpages Code Challenge
 
+## Description
+The main purpose of this Sinatra service is to keep listening to the new valid WebServer logfiles and then enqueue it 
+to the RabbitMQ, process this enqueued job, apply the expected Business Rules, persist it to the NoSQL DB,
+rename the executed WebServer logfile(log_files/webserver#{Timestamp}) with the execution Timestamp and then expose 
+that through endpoints.
+
+When there is no valid ./log_files/webserver.log file, it will raise a WARN message to the ./log/crontab.log file
+## Test Coverage
+
+
+## RabbitMQ Management, queues
+
+## Logs
+
 ## Tech Stack
 - Docker
 - Ruby 2.7.2
@@ -18,6 +32,8 @@ cp -a .env.development .env
 ```shell
 docker-compose up --build
 ```
+
+
 
 ## Implemented endpoints
 ### /most_webpages_views

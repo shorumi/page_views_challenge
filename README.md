@@ -1,18 +1,28 @@
 # Viewed Webpages Code Challenge
 
 ## Description
-The main purpose of this Sinatra service is to keep listening to the new valid WebServer logfiles and then enqueue it 
-to the RabbitMQ, process this enqueued job, apply the expected Business Rules, persist it to the NoSQL DB,
-rename the executed WebServer logfile(log_files/webserver#{Timestamp}) with the execution Timestamp and then expose 
+The main purpose of this **Sinatra service** is at **every 2 minutes** look for a valid WebServer logfiles at `./log_files/` and then enqueue it 
+to the **RabbitMQ**, process this enqueued job, apply the expected **Business Rules**, persist it to the **NoSQL DB**,
+rename the executed WebServer logfile `log_files/webserver#{Timestamp}` with the execution Timestamp and then expose 
 that through endpoints.
 
-When there is no valid ./log_files/webserver.log file, it will raise a WARN message to the ./log/crontab.log file
+When there is no valid `./log_files/webserver.log` file, it will raise a WARN message to the `./log/crontab.log` file
+
 ## Test Coverage
+<img width="1320" alt="Screen Shot 2021-05-27 at 00 35 39" src="https://user-images.githubusercontent.com/71681750/119767653-95556580-be8d-11eb-85ec-0a222e054253.png">
 
 
 ## RabbitMQ Management, queues
+URL: `http://localhost:15672`
+
+Username: `guest` / Password: `guest`
+
+<img width="1433" alt="Screen Shot 2021-05-27 at 01 46 52" src="https://user-images.githubusercontent.com/71681750/119767698-ad2ce980-be8d-11eb-979d-ace50e6ecd7b.png">
+
 
 ## Logs
+<img width="1389" alt="Screen Shot 2021-05-27 at 01 21 48" src="https://user-images.githubusercontent.com/71681750/119767827-ff6e0a80-be8d-11eb-81e5-8704f1d62cbf.png">
+
 
 ## Tech Stack
 - Docker

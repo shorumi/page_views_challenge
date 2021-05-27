@@ -9,14 +9,14 @@ class HandlePageViewJobService
   end
 
   def call
-    execute_persist_page_view_job?
+    execute_persist_page_view_job
   end
 
   private
 
   attr_reader :handle_sys_files, :logger
 
-  def execute_persist_page_view_job?
+  def execute_persist_page_view_job
     return logger.warn(ExceptionMessages::NotFoundFile.message) unless handle_sys_files.file_exists?
 
     PageViewJob.perform_later(

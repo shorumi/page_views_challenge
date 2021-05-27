@@ -4,7 +4,8 @@ SimpleCov.start do
 
   add_group 'App', '/app'
   add_group 'Business Rules', 'app/business/rules'
-
+  add_group 'Utils', 'libs/utils'
+  
   add_filter '/config/'
   add_filter '/spec/'
 end
